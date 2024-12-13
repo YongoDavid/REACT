@@ -1,7 +1,6 @@
 import './App.css';
-import Products from './Products';
 import Cart from './Cart';
-import Users from './Users';
+import Products from './Products';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 
 function App() {
@@ -11,11 +10,8 @@ function App() {
                 <Route path="/" exact>
                     <Products/>
                 </Route>
-                <Route path="/carts" >
+                <Route path="/carts">
                     <Cart/>
-                </Route>
-                <Route path="/users" >
-                    <Users/>
                 </Route>
             </Switch>
         </Router>
