@@ -1,22 +1,21 @@
-import { useState } from "react";
-import useFetch from "./useFetch";
+import useFetch from './useFetch';
 export default function Products(){
-    const [route , setRoute] = useState();
-    const {data } = useFetch(`https://fakestoreapi.com/${route}`);
+    const {isLoading , error , data } = useFetch('https://fakestoreapi.com/products')
+    
     return(
         <div>
-            <h1>Welcome to the Products page</h1>
-            <button onClick={() => setRoute('products')}>CONNECT</button>
+            <h1>All products</h1>
+            {isLoading && <p>Loading</p>}
+            {error && <p> {error} </p>}
 
             <div>
-                {data.map(product => 
-                    <div key={product.id}>
-                        <p>Title: {product.title}</p>
-                        <p>Description: {product.description}</p>
+                {data.map(products => 
+                    <div key={products.id}>
+                        <p>Title: {products.title}</p>
+                        <p>Description: {products.description}</p>
                     </div>
                 )}
             </div>
-
         </div>
-    )
+    );
 }
