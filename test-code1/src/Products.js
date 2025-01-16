@@ -1,42 +1,23 @@
-import {useState , useEffect} from 'react';
+import {useState , useEffect} from "react";
+import Products1 from "./Products1";
 export default function Products(){
-    const [fetchData , setFetchData] = useState("/product");
-    const [data , setData] = useState([]);
-    const [isLoading , setIsLoading] = useState(true);
-    const [error , setError] = useState(null);
-    
-
-    useEffect(() => {
-        fetch(`https://fakestoreapi.com/${fetchData}`)
-            .then(response => {
-                if(!response.ok){
-                    throw Error("Could not fetch Data")
-                }
-                return response.json()
-            })
-            .then(data => {
-                setData(data)
-                setIsLoading(false)
-                setError(null)
-            })
-            .catch(error => {
-                setIsLoading(false)
-                setError(error.message)
-            })
-    })
+    const [data , setData] = useState([])
+    const url = "https://fakestoreapi.com/products"
+    useEffect(()=> {
+        fetch(url)
+            .then(response => response.json())
+            .then(json => setData(json))
+    });
     return(
-        <div className="man">
-            <h1>Welcome to the Product</h1>
-            {isLoading && <h5>Loading...</h5>}
-            {error && <h5>{error}</h5>}
-            <button onClick={() => setFetchData("products")}>fetch</button>
-
+        <div>
+            <h1>Welcome to all products</h1>
             {data.map(product => 
                 <div key={product.id}>
-                    <h3>Title: {product.title}</h3>
-                    <h3>Description: {product.description}</h3>
+                    <h4>Name: {product.title}</h4>
+                    <h4>Description: {product.description}</h4>
                 </div>
             )}
+            <Products1 url={url}/>
         </div>
     )
 }

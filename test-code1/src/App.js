@@ -10,9 +10,6 @@ function App() {
             <Route path="/" exact > 
                 <Products/>
             </Route>
-            <Route path="/carts" exact > 
-                <Cart/>
-            </Route>
         </Switch>
        </Router>
     )
