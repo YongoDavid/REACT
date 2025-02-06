@@ -1,13 +1,11 @@
 import './App.css';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
-import Products from './Products';
 function App() {
     return(
         <Router>
             <Switch>
-                <Route exact>
-                    <Products/>
-                </Route>
+                <Route exact></Route>
+                <Route exact></Route>
             </Switch>
         </Router>
     );
