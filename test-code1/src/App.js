@@ -1,11 +1,16 @@
-import './App.css';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
+import Fetch from './Fetch';
+import Axios from './Axios';
 function App() {
     return(
         <Router>
             <Switch>
-                <Route exact></Route>
-                <Route exact></Route>
+                <Route path="/">
+                    <Axios/>
+                </Route>
+                <Route path="/fetch">
+                    <Fetch/>
+                </Route>
             </Switch>
         </Router>
     );
