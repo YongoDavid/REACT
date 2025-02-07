@@ -5,7 +5,7 @@ function App() {
     return(
         <Router>
             <Switch>
-                <Route path="/">
+                <Route exact path="/">
                     <Axios/>
                 </Route>
                 <Route path="/fetch">
