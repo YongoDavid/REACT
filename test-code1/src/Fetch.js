@@ -1,7 +1,20 @@
-export default function Fetch(props){
-    const data = props.data;
-    const loading = props.loading;
-    const setRoute = props.setRoute;
+import {useState , useEffect} from 'react';
+export default function Fetch(){
+    const [loading, setIsLoading] = useState(true);
+    const [data , setData] = useState([]);
+    const [route , setRoute] = useState('product');
+    
+    useEffect(() => {
+        fetch(`https://fakestoreapi.com/${route}`)
+            .then(response => {
+                setIsLoading(true)
+                return response.json()
+            })
+            .then(json =>{
+                setIsLoading(false)
+                setData(json)
+            })
+    },[route])
     return(
         <div>
             <h1>Testing Fetch API</h1>
