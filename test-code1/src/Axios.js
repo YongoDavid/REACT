@@ -3,7 +3,7 @@ import {useState , useEffect} from 'react';
 export default function Axios(){
     const [loading, setLoading] = useState(true);
     const [data , setData] = useState([]);
-    const [route , setRoute] = useState('products');
+    const [route , setRoute] = useState('product');
 
     useEffect(()=>{
         axios.get(`https://fakestoreapi.com/${route}`)
