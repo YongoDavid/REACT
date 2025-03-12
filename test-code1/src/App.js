@@ -6,10 +6,10 @@ function App() {
         <Router>
             <Switch>
                 <Route exact path="/">
-                    <Axios/>
-                </Route>
-                <Route path="/fetch">
                     <Fetch/>
+                </Route>
+                <Route path="/axios">
+                    <Axios/>
                 </Route>
             </Switch>
         </Router>
