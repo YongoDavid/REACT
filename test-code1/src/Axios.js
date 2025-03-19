@@ -1,28 +1,29 @@
-import {useState , useEffect} from 'react';
-import axios from 'axios';
+import {useState , useEffect} from 'react'
+import axios from 'axios'
 export default function Axios(){
-    const [data , setData] = useState([]);
-    const [loading , isLoading] = useState(true)
+    const [click , setClick] = useState('products')
+    const [data , setData] = useState([])
+    const [isLoading , setIsLoading] = useState(true)
 
     useEffect(() => {
-        axios.get('https://fakestoreapi.com/products')
-        .then(response => 
-            setData(response.data),
-            setTimeout(() => {
-                isLoading(false)
-            }, 1000),
-        )
-    },[])
+        axios.get(`https://dummyjson.com/${click}`)
+        .then(response =>{
+            setData(response.data)
+            setIsLoading(false)
+        })
+    })
     return(
         <div className="main">
-            <h1>Axios</h1>
-            { loading && <h3>LOADING. . . . .</h3>}
-            {data.map(product => (
-                <div key={product.id}>
-                    <p>Tile: {product.title}</p>
-                    <p>Description: {product.description}</p>
-                </div>
-            ))}
-        </div>  
+            {isLoading && <h2>Loading data...</h2>}
+            <button onClick={()=> setClick('products')}>Click</button>
+            <div>
+                {data.map(products)(
+                    <div key={products.id}>
+                        <h3>Title: {products.title} </h3>
+                        <h3>Description: {products.description} </h3>
+                    </div>
+                )}
+            </div>
+        </div>
     )
 }
